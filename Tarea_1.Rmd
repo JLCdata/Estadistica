@@ -1,19 +1,18 @@
 ---
 title: "Tarea 1"
 output:
-  pdf_document: default
   html_document:
     df_print: paged
 ---
 
-![](banner.png)
+![](/Users/stino/Desktop/mds/ramos/stats/tareas/tarea1/banner.png)
 
 <center> <h1>Tarea 1: Foundations</h1> </center>
 <center><strong>CC6104: Statistical Thinking</strong></center>
 #### **Integrantes :** 
 
-- Alumno 1
-- Alumno 2
+- Sebastián Tinoco
+- José Luis Cadiz
 
 #### **Cuerpo Docente:**
 
@@ -71,49 +70,73 @@ A continuación, se presentaran diferentes preguntas que abordan las temáticas 
 #### **Pregunta 1:**
 ¿Por qué la estadística es importante?, ¿Que nos permite realizar con los datos?. De algún ejemplo.
 
-> Respuesta Aquí
+> **La estadística es importante pues nos entrega las herramientas para caracterizar la incertidumbre. En efecto, la estadística nos permite realizar 3 cosas: (i) <u>Describir</u> el mundo de una forma simplificada, (ii) <u>Decidir</u> usando datos en un contexto de incertidumbre y (iii) <u>Predecir</u> nuevas situaciones basado en los datos disponibles.  
+Por ejemplo, en el contexto de ventas de teléfonos la estadística nos permite obtener el valor más repetido a través de la moda, decidir cual modelo de teléfono potenciar mediante la evaluación de tendencias y predecir las ventas futuras mediante un modelo de predicción.**
 
 #### **Pregunta 2:**
 Un amigue cercano a usted le comenta que le preocupa salir a la calle cuando hay ofertas en los helados, esto debido a que ha visto el siguiente titular en un famoso diario chileno: "El aumento en la compra de helados tiene una alta correlación con la muerte de personas en Santiago". ¿Que le recomendaría a su amigue sobre el titular leído?, ¿Debería preocuparse tanto?.
 
-> Respuesta Aquí
+> **Le explicaria que la matriz de correlación no puede explicar causalidad, si no, simplemente grados de relación entre variables. En este caso le recomendaria no sentir temor si es que hay ofertas en los helados, ya que debe existir otra variable que aumente el número de muertes, como podria ser la epoca de vacaciones. Finalmente no deberia preocuparse tanto, pero si podria buscar otras variables que si podrian ser causantes del aumento de muertes y evaluar los grados de relación mediante una matriz de correlación.
+Para más ejemplos de correlaciones sin sentido (*correlaciones espúreas*) visitar https://www.tylervigen.com/spurious-correlations
+**
 
 #### **Pregunta 3:**
 Señale las diferentes aplicaciones que poseen las visualizaciones: Boxplot, histograma, gráfico de pie y scatterplot.
 
-> Respuesta Aquí
+> **
+1. Boxplot: Construidos a partir de los percentiles, su principal función es entregar información respecto a la *simetría de la distribución* de la data.  
+2. Histograma: Sirve para mostrar la distribucion de valores en una variable. Nos entrega información de la *frecuencia absoluta* de cada valor o intervalo que toma la variable.  
+3. Pie chart: Nos entrega información de la *frecuencia relativa* de la variable (usualmente variable categórica). Para esto, divide un círculo en diferentes segmentos, cada uno representando la frecuencia relativa de la categoría.  
+4. Scatterplot: Nos permite entender la *dispersión* de los datos. Se genera a partir de un par de variables, graficando las coordenadas cartesianas de ambas variables.**
 
 #### **Pregunta 4:**
 Suponga que esta estudiando la diferencia en los sueldos de las personas que viven en Santiago y Rancagua. Suponiendo que los datos poseen outliers, ¿Que métrica de resumen utilizaría para comparar los datos?. Justifique su respuesta.
 
-> Respuesta Aquí
+> **La métrica usada seria una que sea robusta a los outliers, una métrica que se caracteriza por esto es la mediana, la cual nos entregará el valor central de cada distribución de sueldos. Finalmente la métrica usada sería la mediana. Adicionalmente podria ser útil un boxplot de ambas distribuciones para visualizar de forma resumida sus percentiles y outliers.**
 
 #### **Pregunta 5:**
 En base al mismo dataset de sueldos para las regiones de Santiago y Rancagua, le comentan que existe un error en los datos y que estos deben ser modificados aumentando un 10% el valor original y sumando $15.000$ a cada uno de los datos. ¿Como se ve afectada la media, mediana y desviación estándar con esta modificación?. Explique a través de ecuaciones el cambio que experimentan las métricas de resumen respecto al valor original, considere para el caso de la media $\bar{X}_{old} = \dfrac{1}{m} \sum^{m}_{i=1} x_i$ y $sd_{old} = \sqrt{\dfrac{1}{(m-1)}\sum_{i=1}^{m}(x_i-\bar{x})^{2}}$ para la desviación estándar.
 
-> Respuesta Aquí
+> 
+**En el caso de la media, el promedio es deplazado por 15.000 y multiplicado por 1.1 desde su valor original. Esto lo vemos pues:
+$$\dfrac{1}{m} \sum^{m}_{i=1} (x_i \cdot 1.1 + 15.000)$$
+$$1.1 \cdot \dfrac{1}{m} \sum^{m}_{i=1} x_i + 15.000 \cdot \dfrac{1}{m} \sum^{m}_{i=1} 1$$
+$$1.1 \cdot \bar{X}_{old} + 15.000$$
+Para la desviación estándar, esta es multiplicada por el factor 1.1, "neutralizando" la suma de los 15.000. Usando el resultado anterior:  
+$$\sqrt{\dfrac{1}{(m-1)}\sum_{i=1}^{m} ((1.1 \cdot x_i + 15.000) - (1.1 \cdot \bar{X}_{old} + 15.000))^2}$$
+$$\sqrt{\dfrac{1}{(m-1)}\sum_{i=1}^{m} (1.1 \cdot x_i - 1.1 \cdot \bar{X}_{old})^2}$$
+$$1.1 \cdot sd_{old}$$
+Por último, la mediana es afectada de la misma forma que la media, esto es, multiplicada por 1.1 y desplazada en 15.000.**
 
 #### **Pregunta 6:**
 Suponga que debe responder un examen sorpresa de 10 preguntas, con 5 alternativas por cada pregunta. ¿Cual es la probabilidad de obtener mas de 5 alternativas correctas si responde de forma aleatoria todo el examen?.
 
 **Nota:** Puede resolver el ejercicio desarrollándolo a mano o utilizando código en R. 
 
-> Respuesta Aquí
+```{r}
+# Como el experimento de tener una pregunta buena es un experimiento Bernoulli con probabilidad p=1/5 de exito, entonces P(6 o más correctas)=1-pbinom(5,10,1/5):
+paste(cat('Probabilidad de tener 6 o más correctas: \n'), 1-pbinom(5,10,1/5))
+```
 
 #### **Pregunta 7:**
 Supongamos que el 10% de los alumnos del curso utilizan Macintosh, el 60% utiliza Windows y el 30% utiliza Linux. Supongamos que el 50% de los usuarios de Mac, el 78% de los usuarios de Windows y el 20% de los usuarios de Linux han sucumbido bajo un terrible virus. Al seleccionar una persona al azar nos enteramos de que su sistema está infectado por el virus. ¿Cuál es la probabilidad de que sea un alumno con Windows?.
 
-> Respuesta Aquí
+> **Se nos pide calcular $P(Windows|Virus)$. Considerando la igualdad y los valores entregados:
+$$P(Virus) = P(Virus|Windows) \cdot P(Windows)+ P(Virus|Linux) \cdot P(Linux) + P(Virus|Mac) \cdot P(Mac)$$
+$$P(Virus) = 0.578$$
+Entonces, usando el *Teorema de Bayes*:
+$$P(Windows|Virus) = \dfrac{P(Virus|Windows) \cdot P(Windows)}{P(Virus)}$$
+$$P(Windows|Virus) = 0.8096$$**
 
 #### **Pregunta 8:**
-Señale si las siguientes declaraciones son verdaderas o falsas respecto a las variables aleatorias:
-
-- [ ] Como las variables aleatorias son funciones que nos permiten obtener valores de probabilidad, siempre podemos obtener $\mathbb{P}(X=x)>0$ evaluando en una $f(x)$ continua y discreta.
-- [ ] Una PDF bien definida solo puede tener valores menores a 1 y un área debajo de la curva igual a 1.
-- [ ] La CDF puede ser representada como la integral de la PDF y PMF.
-- [ ] Una CDF es definida para todo x, continua hacia la derecha y no es decreciente.
-
-> Respuesta Aquí
+- [F] Como las variables aleatorias son funciones que nos permiten obtener valores de probabilidad, siempre podemos obtener $\mathbb{P}(X=x)>0$ evaluando en una $f(x)$ continua y discreta.
+**Para el caso de V.A continuas no es posible obtener la probabilidad de obtener un valor particular, ya que siempre entregará probabilidad 0, solo es posible obtener probabilidad de un rango de valores.**
+- [F] Una PDF bien definida solo puede tener valores menores a 1 y un área debajo de la curva igual a 1.
+**Una PDF si puede tener valores mayores que 1, solo importa que su área bajo la curva sea igual a 1.**
+- [F] La CDF puede ser representada como la integral de la PDF y PMF
+**Una CDF puede ser representada como la integral de una PDF pero como una sumatoria de una PMF.**
+- [F] Una CDF es definida para todo x, continua hacia la derecha y no es decreciente.
+**Una CDF esta definida dentro del dominio de su espacio muestral,y basta con que solamente sea continua por intervalos en las V.A continuas de modo que sea integrable por intervalos y la CDF puede ser discreta para V.A discretas y debe ser decreciente para el caso de V.A continuas de modo que el área converja a 1.**
 
 #### **Pregunta 9:**
 Una famosa fabrica de dulces señala que solo el $5\%$ de sus dulces contienen menos de $350$ gramos. Si los dulces elaborados por la fabrica distribuyen de forma normal, con media $\mu$ y desviación estándar $11.2$. Responda las siguientes preguntas:
@@ -123,7 +146,11 @@ Una famosa fabrica de dulces señala que solo el $5\%$ de sus dulces contienen m
 
 **Nota:** Puede ser útil https://www.statskingdom.com/z_table.html
 
-> Respuesta Aquí
+> **Usando la ecuación
+$$z = \dfrac{x - \mu}{\sigma}$$
+y sabiendo que $z = `r qnorm(0.05)`$, obtenemos que $\mu$ es igual a `r 350 - qnorm(0.05)*11.2`  
+Por otro lado, el porcentaje de dulces que se encuentran sobre los 390 gramos es igual a `r pnorm((350 - (350 - qnorm(0.05)*11.2))/11.2)`**
+
 
 ---
 
@@ -161,7 +188,9 @@ En base al dataset propuesto realice un análisis exploratorio de los datos (EDA
 
 ```{r}
 # Lectura del data set:
-data<-read.table(file="hearth_database.csv",header=T,sep=",")
+library(readr)
+encoding <- guess_encoding("hearth_database.csv", n_max = 1000)[1, 1][[1]] # obtenemos el encoding del dataset
+data<-read.table(file="hearth_database.csv",header=T,sep=",", fileEncoding = encoding)
 head(data)
 ```
 
@@ -169,96 +198,76 @@ head(data)
 # Dimensiones:
 dim(data)
 ```
-En la siguiente tabla se observan la media, mediana y valores máximos que componen al dataset:
+
+**En la siguiente tabla se observan la media, mediana y valores máximos que componen al dataset:**
+
 ```{r}
 # Resumen:
 summary(data)
 ```
-A continuación se muestran los quintiles de los campos númericos.
+
+**A continuación se muestran los quintiles de los campos númericos.**
+
 ```{r}
 #slope:
 quantile(data$slope,seq(0,1,0.2))
-```
-```{r}
 # ca:
 quantile(data$ca,seq(0,1,0.2))
-```
-```{r}
 # thal:
 quantile(data$thal,seq(0,1,0.2))
-```
-```{r}
 # age:
 quantile(data$ï..age,seq(0,1,0.2))
-```
-```{r}
 # trestbps :
 quantile(data$trestbps,seq(0,1,0.2))
-```
-```{r}
 # chol:
 quantile(data$chol,seq(0,1,0.2))
-```
-```{r}
 # thalach:
 quantile(data$thalach,seq(0,1,0.2))
-```
-```{r}
 # oldpeak:
 quantile(data$oldpeak,seq(0,1,0.2))
 ```
-A continuacion se calcula  Matriz de correlación de Pearson:
+
+**A continuación se calcula  Matriz de correlación de Pearson:**
+ 
 ```{r}
 # oldpeak:
 cor(data[7:14])
+
+# de forma visual
+library(ggplot2)
+library(ggcorrplot)
+ggcorrplot(cor(data[7:14]), ggtheme = ggplot2::theme_gray, outline.color = "white", hc.order = TRUE, colors = c("#6D9EC1", "white", "#E46726")) + labs(title = "Matriz de correlaciones")
 ```
-A continuación se muestran BoxPlot de las variables númericas:
+
+**A continuación se muestran BoxPlot de las variables númericas:**
+
 ```{r}
 # boxplot:
  boxplot(x=data[7:14],main="hearth_database")
-
 ```
-Dada la diferencia de maginitudes entre los campos, se obtendran los boxplot de manera individual:
+
+**Dada la diferencia de magnitudes entre los campos, se obtendran los boxplot de manera individual:**
+
 ```{r}
-# boxplot:
+# boxplot slope:
  boxplot(x=data[7],main="slope")
-```
-```{r}
-# boxplot:
+# boxplot ca:
  boxplot(x=data[8],main="ca")
-
-```
-```{r}
-# boxplot:
+# boxplot thal:
  boxplot(x=data[9],main="thal")
-
-```
-```{r}
-# boxplot:
+# boxplot age:
  boxplot(x=data[10],main="age")
-
-```
-```{r}
-# boxplot:
+# boxplot trestbps:
  boxplot(x=data[11],main="trestbps")
-
-```
-```{r}
-# boxplot:
+# boxplot chol:
  boxplot(x=data[12],main="chol")
-
-```
-```{r}
-# boxplot:
+# boxplot thalach:
  boxplot(x=data[13],main="thalach")
-
-```
-```{r}
-# boxplot:
+# boxplot oldpeak:
  boxplot(x=data[14],main="oldpeak")
-
 ```
-A continuacion se visualiza a través de un histograma como distribuyen las variables respecto a los TARGET:
+
+**A continuación se visualiza a través de un histograma como distribuyen las variables respecto a los TARGET:**
 
 ```{r}
 # Data YES y NO:
@@ -286,23 +295,37 @@ hist(TARGET_NO$thalach)
 hist(TARGET_NO$oldpeak)
 ```
 
+---
+
 ### Pregunta 2: Teorema Central del Limite
 
 Pruebe el teorema central del limite aplicando un muestreo de la media en las distribuciones Poisson, Exponencial y una a su elección. Grafique los resultados obtenidos y señale aproximadamente el numero de muestreos necesarios para obtener el resultado esperado, pruebe esto con las siguientes cantidades de muestreo $\{10,100,1000,5000\}$. ¿El efecto ocurre con el mismo número de muestreo para todas las distribuciones?.
 
 **Respuesta**
 
-```{r eval=FALSE}
+```{r}
 # Definición de variables o estructuras necesarias para el muestreo.
-n <- 1000
+n_muestras <- 5000 # numero de muestras
+n_muestra <- 30 # tamaño de cada muestra
 
+poisson <- exp <- unif <- c()
 # Realizar el muestreo de las distribuciones.
-for(i in 1:n) {
-  
+for(i in 1:n_muestras) {
+  poisson <- c(poisson, mean(rpois(n = n_muestra, lambda = 1))) # obtenemos muestra de 5 obs de dist Poisson con media teorica 1 
+  exp <- c(exp, mean(rexp(n = n_muestra, 1/10))) # obtenemos muestra de 5 obs de dist Exponencial con media teorica 10
+  unif <- c(unif, mean(runif(n = n_muestra, 0, 100))) # obtenemos muestra de 5 obs de dist Uniforme con media teorica 50
 }
 
+distribuciones <- data.frame(poisson, exp, unif)
+
 # Código para gráficos
-```
+library(ggplot2)
+ggplot(distribuciones, aes(poisson)) + geom_histogram(bins = 10, color = "black", fill = "white") + labs(title = "Distribución Poisson", x = "Promedio muestral", y = "Frecuencia")
+ggplot(distribuciones, aes(exp)) + geom_histogram(bins = 10, color = "black", fill = "white") + labs(title = "Distribución Exponencial", x = "Promedio muestral", y = "Frecuencia")
+ggplot(distribuciones, aes(unif)) + geom_histogram(bins = 10, color = "black", fill = "white") + labs(title = "Distribución Uniforme", x = "Promedio muestral", y = "Frecuencia")
+```  
+
+**Como pudimos ver, el *Teorema Central del Límite* se cumple a cabalidad: la media muestral se distribuye como normal independiente de la distribución de la que venga. Según los gráficos, podemos ver una convergencia distinta según distribución: la distribución *Uniforme* tiende a converger mas rápido (1000 muestras), mientras que las distribuciones *Poisson* y *Exponencial* logran su convergencia con un mayor número de muestras (5000).**
 
 ---
 
@@ -325,8 +348,7 @@ B<-c(B,sum(y)/lanzamientos)
 plot(B,type = "l",col='red',main = "Gráfico de convergencia",xlab = "# experimento", ylab = "Probabilidad")
 abline(h=0.8, col='blue')
 grid(nx = NULL, ny = NULL,lty = 2,      col = "gray", lwd = 2)  
-cat("Probabilidad de salir cara: \n")
-B[1000]
+cat(paste("Probabilidad de obtener cara: \n", B[1000]))
 ```
 
 #### El problema de Monty Hall 
@@ -369,7 +391,7 @@ n_juegos <- function(n = 10000 ,cambiar_puerta = TRUE){
   } else {
   z<-c(z,0)
   }
-  A<-c(A,sum(z)/i) # Se suman los aciertos de la ultima iteración, lo cual permite contar el número de exitos, dividido por el número de exitos
+  A<-c(A,sum(z)/i) # Se suman los aciertos de la ultima iteración, lo cual permite contar el número de exitos, dividido por el número de intentos
   }
   return(A)}
 A<-n_juegos()
@@ -378,10 +400,12 @@ plot(A,type = "l",col='red',main = "Gráfico de convergencia",xlab = "# juegos",
 abline(h=2/3, col='blue')
 grid(nx = NULL, ny = NULL,lty = 2,      col = "gray", lwd = 2)  
 
-cat("Probabilidad de ganar al cambiar de puerta: \n")
-A[10000]
+cat(paste("Probabilidad de ganar al cambiar de puerta: \n", A[10000]))
 ```
+
 **De los resultados obtenidos anteriormente, se observa que es más probable obtener el premio ganador si es que se cambia de puerta.**
+
+---
 
 ### Pregunta 4: ¿Independencia?
 Ustedes disponen de los dados D1 y D2, los cuales no están cargados y son utilizados para comprobar que $\mathbb{P}(AB)=\mathbb{P}(A)\mathbb{P}(B)$ cuando el evento A es independiente del B. Para estudiar la independencia considere que los eventos A y B se definen de la siguiente manera; sea A el evento dado por los valores obtenidos en el lanzamiento del dado D1, este está compuesto por $A=\{D1=1,D1=2,D1=6\}$. Por otro lado, el evento B viene dado por los valores obtenidos con el dado D2, el que está conformado por $B=\{D2=1,D2=2,D2=3,D2=4\}$. Con esto, tendremos un $\mathbb{P}(A)=1/2$, $\mathbb{P}(𝐵)=2/3$ y $\mathbb{P}(AB)=1/3$. Compruebe de forma gráfica que al realizar 1000 lanzamientos (u otro valor grande que usted desea probar) se visualiza que $\mathbb{P}(AB)=\mathbb{P}(A)\mathbb{P}(B)$. 
@@ -392,23 +416,115 @@ Se le aconseja que para simular los lanzamientos de dados utilice la función `s
 
 **Respuesta:**
 
-```{r eval=FALSE}
+Para resolver este problema, necesitamos comprobar que $\mathbb{P}(AB)=\mathbb{P}(A)\mathbb{P}(B)$. Para esto, trabajaremos con ambos lados de la ecuación: Por una parte, obtendremos de manera empírica la probabilidad $\mathbb{P}(AB)$; por otro lado, obtendremos la multiplicación de ambas probabilidades empíricas $\mathbb{P}(A)\mathbb{P}(B)$. Una vez calculadas ambas partes, evaluaremos gráficamente si se cumple la igualdad y por lo tanto, saber si $A$ es independiente de $B$.
+
+```{r}
 # Primer grupo de eventos
 N_lan = 1000 # Numero de lanzamientos
   
-L_A =  # Lanzamientos favorables A = c(1, 2, 6)
-L_B =  # Lanzamientos favorables B = c(1, 2, 3, 4)
-L_AB = # Lanzamientos favorables AB = c(1, 2)
+L_A <- c(1, 2, 6) # Lanzamientos favorables A
+L_B <- c(1, 2, 3, 4) # Lanzamientos favorables B
+L_AB <- c(1, 2) # Lanzamientos favorables AB
+
+P_A <- length(L_A)/length(1:6) # probabilidad teórica de A
+P_B <- length(L_B)/length(1:6) # probabilidad teórica de B
+P_AB <- length(L_AB)/length(1:6) # probabilidad teórica de AB
+
+d1 <- d2 <- A <- B <- A_B <- A_avg <- B_avg <- A_B_avg <- c()
+for(i in 1:N_lan) { # loop de n lanzamientos
+  
+  d1_tmp <- sample(1:6, 1) # obtengo lanzamiento i del dado 1
+  d2_tmp <- sample(1:6, 1) # obtengo lanzamiento i del dado 2
+  
+  d1 <- c(d1, d1_tmp) # guardo el resultado del dado 1
+  d2 <- c(d2, d2_tmp) # guardo el resultado del dado 2
+  
+  if (d1_tmp %in% L_A){
+    A <- c(A, 1) # caso de exito en obtener A
+  } else{
+    A <- c(A, 0) # caso de no exito en obtener A
+  }
+  
+  if (d2_tmp %in% L_B){
+    B <- c(B, 1) # caso de exito en obtener B
+  } else{
+    B <- c(B, 0) # caso de no exito en obtener B
+  }
+  
+  if ((d1_tmp %in% L_A) & (d2_tmp %in% L_B)){
+    A_B <- c(A_B, 1) # caso de exito en obtener AB 
+  } else{
+    A_B <- c(A_B, 0) # caso de no exito en obtener AB
+  }
+  
+  A_avg <- c(A_avg, mean(A)) # probabilidad empirica de A con i lanzamientos
+  B_avg <- c(B_avg, mean(B)) # probabilidad empirica de B con i lanzamientos
+  A_B_avg <- c(A_B_avg, mean(A_B)) # probabilidad empirica de AB con i lanzamientos
+  
+}
+
+A_B_mult <- A_avg * B_avg # multiplicación de ambas probabildiades (lado derecho de la ecuación)
+lanzamientos = data.frame(d1, d2, A, B, A_B, A_B_avg, A_B_mult) # dataframe con los resultados
+
+# Código para gráfico
+ggplot(lanzamientos, aes(x = 1:N_lan, y = A_B_mult)) + geom_point(size = 1, color = "royalblue") + labs(title = "Independencia: Primer grupo de eventos", x = "Lanzamientos", y = "Promedio acumulado casos favorables") + geom_hline(yintercept = P_AB, color = "red", size = 1)
+
 ```
 
-```{r eval=FALSE}
+**Tal como pudimos observar, para el primer grupo de eventos se cumple la igualdad $\mathbb{P}(AB)=\mathbb{P}(A)\mathbb{P}(B)$ . Por lo tanto, concluimos que son eventos independientes.**
+
+```{r}
 # Segundo grupo de eventos
 N_lan = 1000 # Numero de lanzamientos
   
-L_A =  # Lanzamientos favorables A = c(1, 2, 6)
-L_B =  # Lanzamientos favorables B = c(1, 2, 3)
-L_AB = # Lanzamientos favorables AB = c(1, 2)
+L_A <- c(1, 2, 6) # Lanzamientos favorables A
+L_B <- c(1, 2, 3) # Lanzamientos favorables B
+L_AB <- c(1, 2) # Lanzamientos favorables AB
+
+P_A <- length(L_A)/length(1:6) # probabilidad teórica de A
+P_B <- length(L_B)/length(1:6) # probabilidad teórica de B
+P_AB <- length(L_AB)/length(1:6) # probabilidad teórica de AB 
+
+d1 <- A <- B <- A_B <- A_avg <- B_avg <- A_B_avg <- c()
+for(i in 1:N_lan) { # loop de n lanzamientos
+  
+  d1_tmp <- sample(1:6, 1) # obtengo lanzamiento i del dado 1
+  
+  d1 <- c(d1, d1_tmp) # guardo el resultado del dado 1
+  
+  if (d1_tmp %in% L_A){
+    A <- c(A, 1) # caso de exito en obtener A
+  } else{
+    A <- c(A, 0) # caso de no exito en obtener A
+  }
+  
+  if (d1_tmp %in% L_B){
+    B <- c(B, 1) # caso de exito en obtener B
+  } else{
+    B <- c(B, 0) # caso de no exito en obtener B
+  }
+  
+  if ((d1_tmp %in% L_A) & (d1_tmp %in% L_B)){
+    A_B <- c(A_B, 1) # caso de exito en obtener AB
+  } else{
+    A_B <- c(A_B, 0) # caso de no exito en obtener AB
+  }
+  
+  A_avg <- c(A_avg, mean(A)) # probabilidad empirica de A con i lanzamientos
+  B_avg <- c(B_avg, mean(B)) # probabilidad empirica de B con i lanzamientos
+  A_B_avg <- c(A_B_avg, mean(A_B)) # probabilidad empirica de AB con i lanzamientos
+  
+}
+
+A_B_mult <- A_avg * B_avg # multuplicación de ambas probabilidades (lado derecho de la ecuación)
+lanzamientos <- data.frame(d1, A, B, A_B, A_B_avg, A_B_mult) # dataframe con los resultados
+
+# Código para gráfico
+ggplot(lanzamientos, aes(x = 1:N_lan, y = A_B_mult)) + geom_point(size = 1, color = "royalblue") + labs(title = "Independencia: Segundo grupo de eventos", x = "Lanzamientos", y = "Promedio acumulado casos favorables") + geom_hline(yintercept = P_AB, color = "red", size = 1)
+
 ```
+
+**Para el segundo grupo de eventos notamos que <u>no</u> se cumple la igualdad $\mathbb{P}(AB)=\mathbb{P}(A)\mathbb{P}(B)$. Por lo tanto, concluimos que son eventos dependientes.**
 
 ---
 
@@ -421,7 +537,6 @@ Para realizar el experimento usted decide asumir las siguientes declaraciones, b
 - Sabe que su amigo posee fondos en el rango de 0 a 200 dolares.
 - Las apuestas como mínimo deben ser igual a 5 dolares.
 - El monto de las apuestas no cambia y son siempre igual a la primera. Por ejemplo, si su amigo apuesta 50 dolares, todos los próximos juegos apuesta 50 hasta que se acaba su dinero.
-- Asuma que al momento de ganar el jugador anexa el valor apostado a sus fondos.
 
 En el experimento deberá obtener la evolución de los fondos hasta que el jugador se queda sin fondos para jugar. Puede ser útil seguir la lógica de una moneda cargada para realizar esto. Pruebe esto con una apuesta igual a 5, 25 y 50 graficando los resultados. Comente los resultados obtenidos.
 
