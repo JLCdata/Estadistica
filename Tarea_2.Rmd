@@ -1,0 +1,629 @@
+---
+title: "Tarea 2"
+output:
+  html_document:
+    df_print: paged
+---
+
+![](banner.png)
+
+<center> <h1>Tarea 2: Frequentist Inference </h1> </center>
+<center><strong>CC6104: Statistical Thinking</strong></center>
+#### **Integrantes :** 
+
+- Sebastián Tinoco
+- Jose Cadiz
+
+#### **Cuerpo Docente:**
+
+- Profesor: Felipe Bravo M.
+- Auxiliar: Sebastian Bustos e Ignacio Meza D.
+            
+
+#### **Fecha límite de entrega:**
+
+### **Índice:**
+
+1. [Objetivo](#id1)
+2. [Instrucciones](#id2)
+3. [Referencias](#id3)
+2. [Primera Parte: Preguntas Teóricas](#id4)
+3. [Segunda Parte: Elaboración de Código](#id5)
+
+### **Objetivo**<a name="id1"></a>
+
+Bienvenid@s a la segunda tarea del curso Statistical Thinking. Esta tarea tiene como objetivo evaluar los contenidos teóricos de la segunda parte del curso, los cuales se enfocan principalmente en inferencia estadística, diseño de experimentos y test de hipótesis. Si aún no han visto las clases, se recomienda visitar los enlaces de las referencias.
+
+La tarea consta de una parte teórica que busca evaluar conceptos vistos en clases. Seguido por una parte práctica con el fin de introducirlos a la programación en R enfocada en el análisis estadístico de datos. 
+
+### **Instrucciones:**<a name="id2"></a>
+
+- La tarea se realiza en grupos de **máximo 2 personas**. Pero no existe problema si usted desea hacerla de forma individual.
+- La entrega es a través de u-cursos a más tardar el día estipulado en la misma plataforma. A las tareas atrasadas se les descontará un punto por día.
+- El formato de entrega es este mismo **Rmarkdown** y un **html** con la tarea desarrollada. Por favor compruebe que todas las celdas han sido ejecutadas en el archivo html.
+- Al momento de la revisión tu código será ejecutado. Por favor verifica que tu entrega no tenga errores de compilación.
+- No serán revisadas tareas desarrolladas en Python.
+- Está **PROHIBIDO** la copia o compartir las respuestas entre integrantes de diferentes grupos.
+- Pueden realizar consultas de la tarea a través de U-cursos y/o del canal de Discord del curso. 
+
+
+### **Referencias:**<a name="id3"></a>
+
+Slides de las clases:
+
+- [Introduction to Statistical Inference](https://github.com/dccuchile/CC6104/blob/master/slides/ST-inference.pdf)
+- [Design of Experiments & Hypothesis Testing](https://github.com/dccuchile/CC6104/blob/master/slides/ST-hypothesis.pdf)
+
+Enlaces a videos de las clases:
+
+- Introduction to Statistical Inference: [video1](https://youtu.be/A0BAhO9_RSI) [video2](https://youtu.be/6Io555e2stM) [video3](https://youtu.be/2-Q2f6zmTns) [video4](https://youtu.be/Hp2A5EJoXbk) [video5](https://youtu.be/M0Ag4bww7Q0) [video6](https://youtu.be/K7khgecup3I) [video7](https://youtu.be/uZ126Lh3L-k) [video8](https://youtu.be/kHSPx99nJ7g)
+- Design of Experiments & Hypothesis Testing: [video1](https://youtu.be/3MueyHnNNig) [video2](https://youtu.be/JuyIrya23E0) [video3](https://youtu.be/OXTyG6DIvK4) [video4](https://youtu.be/95QeSwrNoLI) [video5](https://youtu.be/ZCr3WCdc-54) [video6](https://youtu.be/T6ZR0KoKhBQ)
+
+Documentación:
+
+- [ggplot2](https://ggplot2.tidyverse.org/)
+
+# Primera Parte: Preguntas Teóricas<a name="id4"></a>
+A continuación, se presentaran diferentes preguntas que abordan las temáticas vistas en clases. Por favor responda cada una de estas de forma breve.
+
+#### **Pregunta 1:**
+A continuación, se presenta una serie de declaraciones relacionadas con el sesgo en el muestreo, señale de forma breve el tipo de sesgo que se observa y como podría solucionar el problema de sesgo. Si no observa sesgo en alguna de las declaraciones, comente solamente que es un experimento sin sesgo:
+
+  1. La Tercera quiere conocer la opinión de la gente sobre una propuesta de ley sobre el matrimonio igualitario. Un reportero del diario sale de la central ubicada en Las Condes y selecciona al azar a 300 personas que pasean por allí, preguntándoles sobre la ley propuesta. ¿Qué podemos decir de este plan de muestreo?.
+
+> **Este plan de muestreo no es correcto ya que hay un sesgo de conveniencia en la muestra, ya que es sabido que Las Condes es un sector asociado a personas más conservadoras en este tipo de temas. Para corregirlo habria que ir a distintas comunas de Santiago.**
+
+  2. Una empresa de telefonía quiere conocer el grado de satisfacción de los propietarios de su nuevo servicio 5g, para ver que tal es la calidad del servicio entregado. Para ello, selecciona al azar 500 números entre todo el conjunto de clientes, colocándose en contacto telefónico con ellos. ¿Qué podemos decir de este plan de muestreo?
+
+> **El muestreo cumple con una buena propiedad y es que es aleatorio, pero será bueno si es que el tamaño es representativo, esto quiere decir que el size no debe ser un % muy pequeño respecto de la población, ya se estarian perdiendo captura de carácteristicas, por ejemplo estarian perdiendo la captura de los clientes que se fueron de la compañia.**
+
+  3. Una compañía aérea quiere hacer una encuesta a sus clientes para mejorar su servicio. Durante un mes, envía un correo electrónico a una muestra aleatoria de clientes que hayan volado con la aerolínea el día anterior (ningún cliente será contactado más de una vez). En el correo electrónico se indica que la compañía aérea desea que el cliente rellene una encuesta de 10 minutos para ayudar a la compañía a mejorar su servicio. ¿Qué podemos decir de este plan de muestreo? ¿el sorteo de un producto podría solventar esto?.
+  
+> **Si bien no se detalla explícitamente, el encuestador podría incurrir en el sesgo de respuesta (específicamente el sesgo de no respuesta), pues solo responderán la encuesta los usuarios que tienen una intención fuerte con respecto al servicio (por ejemplo: quejas), mientras que todo el resto no responderá pues la encuesta representa un costo en términos de tiempo. Para remediar esto, se pueden ofrecer incentivos para responder la encuesta, como premios o descuentos.**
+
+
+#### **Pregunta 2:**
+Explique una buena practica para desarrollar un muestreo, ¿Cree que en una encuesta real es factible obtener una muestra sin sesgo?
+
+> **Una buena práctica para hacer un muestreo (y quizás la mas importante) es que la muestra sea representativa de la población. En otras palabras, lo que se quiere es generar una muestra que se comporte como la población pero a una menor escala. En la práctica, es muy difícil saber si una muestra es o no representativa, pues es imposible conocer los datos de toda la población. Existen pocas instancias donde se puede conocer data de la población (como en los censos poblacionales), pero la historia muestra que ni aun en esas instancias se tiene una buena medición de los datos poblacionales. Finalmente, hay que tener en cuenta que se puede incurrir en un sesgo por las personas que a menudo se niegan a responder.**
+
+#### **Pregunta 3:**
+Nombre una ventaja y una desventaja del método de máxima verosimilitud. Justifique cada una de las ventajas y desventajas señaladas.
+
+> **Su principal ventaja es que es un estimador consistente de cualquier parámetro, es decir, su sesgo y su error estandar tienden a 0 cuando la muestra tiende a infinito. Y una desventaja es que el estimador de la varianza es un estimador sesgado, es decir, la esperanza del estimador no es el valor teórico del parámetro de la distribución.**
+
+#### **Pregunta 4:**
+Considere que recopila $X_{1},...,X_{n} \sim Poisson(\theta)$ donde $\theta$ es un parámetro desconocido. Calcule el estimador de máxima verosimilitud para $\theta$. Considere la siguiente expresión para la Poisson:
+
+$$ f(X_{i};\theta) = \prod_{i=1}^{n} \frac{\theta^{X_{i}}e^{-\theta}}{X_{i}!}$$
+
+**Nota:** Puede ser útil utilizar el logaritmo natural para inferir $\theta$.
+
+> **Partiendo de la ecuación inicial**
+  $$L(\theta|X) = \prod_{i=1}^{n} \frac{\theta^{X_{i}}e^{-\theta}}{X_{i}!}$$
+  **Desarrollando la expresión**
+  $$L(\theta|X) = \frac{\theta^{\sum\limits_{i=1}^{n} X_i} e^{-n\theta}}{\prod\limits_{i=1}^{n} X_{i}!}$$
+  **Aplicando logaritmos**
+  $$\ln(L(\theta|X)) = \sum\limits_{i=1}^{n} X_i \cdot \ln(\theta) - n \theta \cdot \ln(e) - \ln(\prod\limits_{i=1}^{n} X_{i}!)$$
+  **Derivando e igualando a 0**
+  $$\frac{\partial \ln(L(\theta|X))}{\partial \theta} = \frac{\sum\limits_{i=1}^{n} X_i}{\theta} - n = 0$$
+  **Finalmente, encontramos la expresión del estimador $\hat \theta$**
+  $$\hat \theta = \frac{\sum\limits_{i=1}^{n} X_i}{n}$$
+
+#### **Pregunta 5:**
+Suponga que usted ha realizado una `sampling distribution` de dos encuestas diferentes en los que obtiene los datos `Muestreo 1` y `Muestreo 2`, al momento de estimar el parámetro $\beta$ de cada uno de los muestreos, se da cuenta que el estimador para los diferentes datos varia según el tamaño de observaciones (n). Al darse cuenta de esto, gráfica el histograma del comportamiento de los estimadores, obteniendo los siguientes gráficos:
+
+<p float="left">
+  <img src="estimator_1.png" width="450" /> 
+  <img src="estimator_2.png" width="450" />
+</p>
+
+Suponiendo que la linea roja en los gráficos representa el valor real del parámetro para cada muestra, comente las características que observa en la evolución del estimador para el `Muestreo 1` y el `Muestreo 2`.
+
+> **De los gráficos, podemos observar que los estimadores de ambas muestras poseen sesgo (esto es, difieren del valor poblacional en cierto rango). Sin embargo, la diferencia está en que el estimador del `Muestreo 1` presenta consistencia (en otras palabras, el sesgo se aproxima a cero cuando el tamaño de muestra aumenta), mientras que el estimador del `Muestro 2` no. Esto se extrae de los gráficos: a medida que aumenta el tamaño de muestra, la `sampling distribution` del `Muestreo 1` se va acercando al valor real del parámetro (estimador consistente), al contrario del `Muestreo 2` donde a medida que aumenta el tamaño de muestra la sampling distribution no se desplaza (estimador no consistente).**
+
+#### **Pregunta 6:**
+Considere que esta trabajando con intervalos de confianza al $95\%$ e intenta estudiar un parámetro $\theta$, ¿porque es incorrecto decir, en la visión frecuentista, que la probabilidad que $\theta$ pertenezca al intervalo es del $95\%$?
+
+> **La afirmación es falsa pues la interpretación es justamente al revés: Un intervalo de confianza al $95\%$ quiere decir que la probabilidad de que el <u>intervalo construido contenga al valor poblacional</u> es del $95\%$. Lo anterior se justifica en la aleatoriedad del intervalo de confianza, pues sus valores dependen directamente de la muestra obtenida. De esta manera, el enfoque frecuentista plantea que el intervalo de confianza tiene $\alpha$% de probabilidad de contener al valor poblacional, aunque como veremos más adelante en la tarea, esto rara vez se cumple en la realidad.**
+
+#### **Pregunta 7:**
+Se sabe que al realizar un test de hipótesis es posible equivocarse al tomar una decisión. Sí denotamos $H_0$ como la hipótesis nula y $H_1$ como la hipótesis alternativa, existen dos posibles errores que se pueden obtener: 
+
+- [X] Rechazar $H_0$ cuando $H_0$ era correcta.
+- [X] Aceptar $H_0$ cuando $H_1$ era correcta.
+
+En base a los errores señalados, de un ejemplo de cuando es más relevante disminuir las opciones de aceptar $H_0$, si $H_1$ es la correcta.
+
+
+> **Rechazar $H_0$ cuando $H_0$ era correcta se conoce como Error tipo I, mientras que aceptar $H_0$ cuando $H_1$ era correcta se conoce como Error tipo II. Una propiedad de ambos errores es que reducir la probabilidad del Error tipo I conduce a incrementar la probabilidad del Error tipo II. Por otro lado, podríamos querer reducir las opciones de caer en Error de tipo II en un test de hipótesis de cáncer:**
+$$H_0: \text{El paciente no tiene cáncer}$$
+$$H_1: \text{El paciente tiene cáncer}$$
+**En este caso, el Error tipo I sería concluir que el paciente tiene cáncer cuando en realidad no lo tiene. Al contrario, el Error tipo II sería concluir que el paciente no tiene cáncer cuando en realidad si lo tiene. Ccomo el Error tipo II es más costoso que el Error tipo I, es mas conveniente reducir el Error tipo II.**
+
+#### **Pregunta 8:**
+Explique cual es la diferencia entre el test **one-sided** y **two-sided**, de un ejemplo en donde se pueda utilizar **one-sided** y otro donde se pueda utilizar **two-sided**. ¿Es un método mejor que el otro?
+
+
+> **La diferencia fundamental entre ambos test es que el two-sided tiene como hipótesis nula una igualdad (de la forma $H_0: \mu = 0$), mientras que el one-sided tiene como hipótesis nula una desigualdad (de la forma $H_0: \mu ≥ 0$). Lo anterior repercute directamente en la evaluación del test estadístico, pues mientras el one-sided testea si el estadístico es mayor (en caso de testear con la desigualdad >) al valor referencial, el two-sided se preocupa por testear si el estadístico es mayor o menor al mismo valor. Esto conduce a que el one-sided concentre toda la significancia en un lado de la cola (el cual depende de la hipótesis planteada), mientras que el two-sided debe repartir la significancia entre las 2 colas.**  
+**El test one-sided se puede ocupar en casos donde se tiene una desigualdad pensada con anticipación que se quiere testear (por ejemplo: Los hombres tienen mejores sueldos que las mujeres), mientras que el two-sided se puede ocupar en casos cuando se tiene un valor fijo que se quiere testear (por ejemplo: el sueldo promedio de Chile es \$500.000)**  
+**Finalmente, no hay ningún método estricamente mejor que otro, pues ambos métodos tienen diferentes usos según las necesidades del estadístico.**
+
+#### **Pregunta 9:**
+
+Explique, con sus palabras, a que se refiere la siguiente afirmación: "Un resultado de significancia estadística es distinto a uno de significancia practica". Complemente su respuesta analizando la siguiente frase:
+
+    'Se tienen datos normales de media desconocida. Con los datos, se realiza un test de hipótesis donde la hipótesis nula especifica que la media es cero. Realizando el test, se obtuvo un p-valor de $10^{-10}$, luego producto de este resultado la media necesariamente tiene que ser muy distinta a cero.'
+
+> **La afirmación refiere a la relevancia que puede tener un resultado significativo. En ese sentido, la significancia de un resultado no implica que sea relevante en el área de estudio. Esto se puede aplicar con la frase expuesta: si bien el p-value es altamente significativo (al 95%), la media no necesariamente tiene que ser muy distance a cero. Por ejemplo, la media podría ser 0.001 y aun así arrojar ese p-value. De esta forma, significancia estadística no implica relevancia.**
+
+---
+
+# Segunda Parte: Elaboración de Código<a name="id5"></a>
+
+En la siguiente sección deberá resolver cada uno de los experimentos computacionales a través de la programación en R. Para esto se le aconseja que cree funciones en R, ya que le facilitará la ejecución de gran parte de lo solicitado.
+
+Para el desarrollo preste mucha atención en los enunciados, ya que se le solicitará la implementación de métodos sin uso de funciones predefinidas. Por otro lado, Las librerías permitidas para desarrollar de la tarea 2 son las siguientes:
+
+```{r, message = FALSE}
+# Manipulación de estructuras
+library(tidyverse)
+
+# Para realizar plots
+library(ggplot2)
+library(plotly)
+
+# Manipulación de varios plots en una imagen.
+library(gridExtra)
+```
+
+
+### Pregunta 1: Estimadores.
+Esta pregunta tiene como objetivo comprobar a través de gráficos las características que poseen los estimadores.Por favor responda de forma separada las siguientes preguntas: 
+
+- [ ] En clases se vio que el estimador $\hat{p}_{n} = \frac{1}{n} \displaystyle{\sum_{i=1}^{n}}X_{i}$ es un estimador consistente para $X_{i}$ Bernoulli de tasa $p$, verifique esto númericamente para una distribución Bernoulli de $p=0.5$, es decir grafique como se ve $\hat{p}_{n}$ para valores de $n$ y compárelo con el valor verdadero.
+
+**Respuesta:**
+
+```{r eval=TRUE}
+library(plotly)
+n<-10000
+p_historia<-c()
+for (num_datos in seq(0, n, by=100)) {
+x<-rbinom(n,1,0.5)
+p_gorro<-sum(x)/length(x)
+p_historia<-c(p_historia,p_gorro)  # Vector que guarda el valor del estimador en funcion del número de datos
+}
+
+# Gráfico
+
+x<-seq(0, n, by=100)
+ctes<-c(matrix(1, 1,length(x)))*0.5
+data <- data.frame(p_historia,x,ctes)
+fig <- plot_ly(data,x = ~x)
+fig <- fig %>% add_trace(y = ~p_historia,type = 'scatter', name = 'Estimador',mode = 'lines') 
+fig <- fig %>% add_trace(y = ~ctes,type = 'scatter', name = 'Valor esperado',mode = 'lines') 
+fig <- fig %>% layout(title = "Valor estimador v/s valor teórico",
+         xaxis = list(title = "# de datos"),
+         yaxis = list (title = "Value"))
+fig
+```
+
+```{r eval=TRUE}
+# Por ley de los grandes números podemos estimar la esperanza de la V.A mediante el promedio de los datos
+cat("Se puede verificar a traves del promedio de los valores obtenidos que se obtiene un valor en torno a 0.5\n")
+mean(p_historia)
+```
+
+A partir de la primera figura, se puede corroborar que el valor del estimador esta entorno al valor teorico esperado, es decir $E(\hat{p})=\mu=p$ y además $VAR(\hat{p}) \rightarrow 0$.
+
+
+- [x] Sabemos que no todos los estimadores insesgados son consistentes. Considere  el estimador $T_{n} = \hat{p}_{n} + \epsilon_{n}$ donde $\epsilon_{n} \sim \mathcal{N}(0,1)$ es posible verificar que $T_{n}$ es insesgado pero no es consistente, para ver esto repita lo que realizo en el punto anterior y estudie lo que sucede. ¿Porque cree que no es consistente el estimador?, Justifique su respuesta.
+
+**Respuesta:**
+```{r, eval=TRUE}
+library(plotly)
+n<-10000
+p_historia<-c()
+for (num_datos in seq(0, n, by=100)) {
+x<-rbinom(n,1,0.5)
+p_gorro<-sum(x)/length(x)+rnorm(1)
+p_historia<-c(p_historia,p_gorro)  # Vector que guarda el valor del estimador en funcion del número de datos
+}
+
+# Grafico
+
+x<-seq(0, n, by=100)
+ctes<-c(matrix(1, 1,length(x)))*0.5
+data <- data.frame(p_historia,x,ctes)
+fig <- plot_ly(data,x = ~x)
+fig <- fig %>% add_trace(y = ~p_historia,type = 'scatter', name = 'Estimador',mode = 'lines') 
+fig <- fig %>% add_trace(y = ~ctes,type = 'scatter', name = 'Valor esperado',mode = 'lines') 
+fig <- fig %>% layout(title = "Valor estimador v/s valor teórico",
+         xaxis = list(title = "# de datos"),
+         yaxis = list (title = "Value"))
+fig
+```
+```{r eval=TRUE}
+cat("Se puede verificar a traves del promedio de los valores obtenidos que se obtiene un valor en torno a 0.5\n")
+mean(p_historia)
+```
+A partir del gráfico y variando los valores de n, se observa que si bien el valor esperado esta entorno a 0.5 la diferencia entre 0.5 y el valor real no tiende a disminuir en la medida que n aumenta, de este modo el error estandar no tiende a 0 cuando n crece.
+
+---
+
+### Pregunta 2: Intervalo de Confianza
+El objetivo de esta pregunta es visualizar los intervalos de confianza en datos simulados de una población, para visualizar la incertidumbre que presenta una estimación. Para esto, ustedes deberán generar datos de una distribución exponencial, la cual deberán considerar como los datos de la población. En base a los datos generados, simulen la `sampling distribution` de la media muestreal. Notar que el valor obtenido en cada muestra les entregará un estimador de la media, o sea, para cada valor podremos calcular un intervalo de confianza. Hecho esto, calculen el intervalo de confianza del $95\%$ para cada una de las medias estimadas, utilizando la función de cuantil vista en clases.
+
+Para la elaboración de esta parte de la tarea, se recomienda realizar el experimento con la siguiente secuencialidad:
+
+- [ ] Obtener la media de la población (en este caso la exponencial).
+- [ ] Realizar una `sampling distribution` con un tamaño de muestra igual a $30$ sobre los datos generados de la población. Repita la obtención de la media un número elevado de veces (recomendación $5000$ veces).
+- [ ] Calcular el intervalo de confianza del $95\%$ para cada uno de las medias obtenidas en las iteraciones.
+- [ ] De acuerdo a los valores obtenidos (medias e intervalos de confianza), grafique cada una de las medias obtenidas en conjunto a sus intervalos de confianza. Aquí debe notar que, si el intervalo de confianza contiene a la media de la población, este se considerará como parte del intervalo de confianza del $95\%$, haga un conteo de cuantos valores están contenidos en este intervalo.
+- [ ] Señalar en el plot de intervalo de confianza los valores que están dentro y fuera del intervalo. Comente que visualiza de los intervalos de confianza obtenidos, ¿existe incertidumbre?.
+- [ ] En base al conteo realizado en el punto anterior, observe cómo se comporta la proporción de intervalos de confianza, ¿es acaso este igual al $95\%$ teórico usado para calcularlo?.
+
+**Notar:** Responder cada una de las preguntas señaladas en esta sección.
+
+**Hints**: 
+
+- Para realizar la `sampling distribution` podría serle útil el comando `sample()`.
+- Puede ser útil generar un dataframe para graficar con ggplot2.
+
+<details>
+<summary>Gráfico esperado para intervalos de confianza</summary>
+<p>
+
+Del gráfico es posible observar que la línea punteada es la media de la población y los puntos de colores son las estimaciones con sus respectivos intervalos de confianza. Notar que para el plot no se utilizaron las 5000 veces, se recomienda utilizar 100 valores para visualizar bien el fenómeno.
+
+![](plot1.PNG)
+
+</p>
+</details>  
+
+---
+
+
+**Respuesta:**
+
+```{r, fig.align = "center", message = FALSE, fig.width = 9, fig.heigth = 4}
+# Definimos tamaños de muestreo
+tamano_muestra = 30
+n_muestras = 5000
+
+# Generamos una exponencial para luego generar el subsampling de ella
+exponencial = rexp(10000, rate = 2)
+# Obtenemos la media poblacional de la exponencial
+exp_mean <- mean(exponencial)
+
+# Sampling distribution, calculo del intervalo de confianza y proporción.
+# - En base a la distribución exponencial, generamos multiples sampling 
+# distribution.
+# - Se estima la media del muestreos y obtenemos el intervalo de confianza de 
+# cada una de las muestras
+
+alpha = 0.05
+sample_mean <- sample_se <- sample_left <- sample_right <- sample_type <- c()
+for (i in 1:n_muestras){
+  sample <- sample(exponencial, 30)
+  tmp_mean <- mean(sample)
+  tmp_se <- sd(sample)/sqrt(tamano_muestra)
+  tmp_error <- qt(p =1 - alpha/2, df = tamano_muestra - 1) * tmp_se
+  tmp_left <- tmp_mean - tmp_error
+  tmp_right <- tmp_mean + tmp_error
+  
+  
+  sample_mean <- c(sample_mean, tmp_mean)
+  sample_se <- c(sample_se, tmp_se)
+  sample_left <- c(sample_left, tmp_left)
+  sample_right <- c(sample_right, tmp_right)
+  
+  if ((tmp_left < exp_mean) & (exp_mean < tmp_right)){
+    sample_type <- c(sample_type, 'IN')
+  } else {
+    sample_type <- c(sample_type, 'OUT')
+  }
+  
+}
+
+exp_df <- data.frame(sample_mean, sample_se, sample_left, sample_right, sample_type)
+
+# Plot de Intervalos de confianza (ver respuesta esperada)
+ggplot(head(exp_df, 100), aes(x = sample_mean, y = 1:100)) + geom_point(aes(color = sample_type)) + labs(x = 'Promedio', y = 'Muestras', title = "Rendimiento de Intervalos de Confianza (100 obs)") + geom_vline(xintercept = exp_mean, linetype = "dashed") + geom_linerange(aes(xmin = sample_left, xmax = sample_right, color = sample_type)) + scale_color_manual(values = c("IN" = "darkturquoise", "OUT" = "deeppink3")) + theme_light()
+
+# Plot de proporción de Intervalos de confianza
+
+ggplot(head(exp_df, 100), aes(x = sample_type, fill = sample_type, color = sample_type)) + geom_bar(position = "stack") + scale_color_manual(values = c("IN" = "darkturquoise", "OUT" = "deeppink3")) + scale_fill_manual(values = c("IN" = "darkturquoise", "OUT" = "deeppink3")) + ylim(0, 100) + labs(x = "Grupo", y = "Cantidad de aciertos", title = "Proporción de intervalos de confianza (100 obs)") + geom_hline(yintercept = 95, linetype = "dashed") + theme_light()
+
+```
+
+Del gráfico podemos concluir que existe poca incertidumbre, pues la mayoría de los intervalos de confianza contienen el valor poblacional. Sin embargo, un punto importante a considerar es que el 95% teórico **no se cumple**. En efecto, el porcentaje de aciertos de los intervalos de confianza equivale a `r nrow(subset(exp_df, sample_type == "IN"))/nrow(exp_df)`, `r 0.95 - nrow(subset(exp_df, sample_type == "IN"))/nrow(exp_df)` menos que el 95% teórico. Por lo tanto, si bien existe poca incertidumbre a aseverar que los intervalos contengan el valor poblacional, existe **mucha** incertidumbre a que se cumpla el 95% teórico planteado.
+
+---
+
+### Pregunta 3: Estimación de Máxima Verosimilitud
+
+En esta pregunta deberán trabajar con el dataset ``Body Measurements_original.csv``. El objetivo será visualizar e inferir los parámetros que componen a dos variables del dataset. Para esto deberá visualizar el comportamiento de la likelihood, utilizando diferentes cantidades de datos, y realizar la optimización de la likelihood para obtener los estimadores de las variables a través de la función `nlminb()`. Notar que esta pregunta consiste en dos partes.
+
+a) La primera actividad consiste en realizar inferencia sobre la variable ``TotalHeight``, donde deberá asumir y realizar los siguientes puntos:
+
+- [ ] Asuma que los datos de ``TotalHeight`` distribuyen de forma gaussiana. Visualice esto a través de un gráfico de densidad en la variable ``TotalHeight``.
+- [ ] Grafique a través de un gráfico de calor el rango de valores en que se mueve la solución del problema de likelihood, para esto defina su problema en base a -log(likelihood). Mas información se entrega en el esqueleto de la pregunta.
+- [ ] Visualice cómo se comporta la -log(likelihood) con diferentes cantidades de datos para la estimación de $\mu$; para visualizar esto, fije $\sigma$ en 12 y varié solamente el valor de $\mu$. Para observar el comportamiento del estimador con diferentes cantidades de datos, realice un subsampling de 100 datos, 300 datos y la totalidad de los datos de la variable ``TotalHeight``. ¿Qué se puede observar acerca del comportamiento del estimador $\mu$?, responda brevemente esta pregunta.
+- [ ] Finalmente aplique el comando `nlminb()` sobre la likelihood y encuentre el máximo o mínimo del problema a optimizar. Señale implícitamente cuales son los valores obtenidos para $\sigma$ y $\mu$.
+
+b) Para la segunda parte deberá escoger otra de las variables que componen el dataset, como por ejemplo `Age`, y estimar a traves de la -log(likelihood) **solo** los parámetros de la distribución que observa (notar que solo debe inferir los estimadores de variable escogida). Para señalar la distribución de los datos se recomienda realizar el plot de densidad y comparar con el comportamiento de las distribuciones teóricas vistas en clases.
+
+Cabe señalar que el método de máxima verosimilitud deberá ser programado por usted y **no** podrá utilizar librerías que entreguen el valor directo (por ejemplo, la librería MASS).
+
+**Respuesta**
+
+```{r, eval=TRUE}
+#Parte a) i)
+
+# Carga de dataset
+library(plotly)
+library(readr)
+datos<-read_csv("Body Measurements_original.csv")
+dim(datos)
+muesperado<-head(datos)
+sgimaesperado<-sd(datos$TotalHeight)
+
+# Primera Parte
+# Plot de densidades de la variables TotalHeight
+density<-density(datos$TotalHeight)
+fig <- plot_ly(x = ~density$x, y = ~density$y, type = 'scatter', mode = 'lines', fill = 'tozeroy')
+fig <- fig %>% layout(xaxis = list(title = 'Carat'),
+         yaxis = list(title = 'Density'))
+fig <- fig %>% layout(title = "Densidad de la variable TotalHeight",
+         xaxis = list(title = "TotalHeight"),
+         yaxis = list (title = "Densidad"))
+fig
+
+```
+
+
+
+
+```{r, eval=TRUE}
+#Parte a) ii)
+
+# Carga de dataset
+library(plotly)
+library(readr)
+datos<-read_csv("Body Measurements_original.csv")
+n<-length(datos)
+
+# Plot de Likelihood
+
+# - Señalar el rango de valores para observar la solución. Genere un vector con 
+# los valores
+mu <- seq(20,80,by=0.5) # definimos secuencia de 20 -> 80 de 0.5 en 0.5.
+sigma <- seq(5,23,by=0.5) # definimos secuencia de 5 -> 23 de 0.5 en 0.5.
+
+
+ll_plot <- function(a, b) {
+  # Definimos la likelhood
+  
+-sum(dnorm(datos$TotalHeight,mean=a,sd=b,log = TRUE))
+#like<-(n/2)*log(2*pi)+(n/2)*log(b^2)+(1/(2*b^2))*sum((datos$TotalHeight-a)^2)
+
+}
+
+# Vectorizamos nuestra función para recorrer y estimar los valores
+ll_plot = Vectorize(ll_plot)
+
+ll_plot = outer(X=mu, Y=sigma, ll_plot)
+
+# Grafico de calor
+filled.contour(x=mu, y=sigma, z=ll_plot, xlab=expression(mu), 
+               ylab=expression(sigma))
+```
+
+Se observa un minimo en torno a (50,15).
+
+```{r, eval=TRUE}
+#Parte a) iii)
+
+# Carga de dataset
+library(plotly)
+library(readr)
+datos<-read_csv("Body Measurements_original.csv")
+
+# Plot de comportamiento de SOLO mu al variar la cantidad de datos
+
+mu <-  seq(20,80,by=0.5) # definimos secuencia de 20 -> 80 de 0.5 en 0.5.
+
+xall<-datos$TotalHeight
+x100<-sample(datos$TotalHeight,100)
+x300<-sample(datos$TotalHeight,300)
+
+
+# Version all
+
+yall<-c()
+for (mui in mu) {
+yall<-c(yall,-sum(dnorm(xall,mean=mui,sd=12,log = TRUE)))
+
+}
+
+
+y100<-c()
+# Version 100
+for (mui in mu) {
+  y100<-c(y100,-sum(dnorm(x100,mean=mui,sd=12,log = TRUE)))
+}
+
+
+
+y300<-c()
+# Version 300
+for (mui in mu) {
+  
+  y300<-c(y300,-sum(dnorm(x300,mean=mui,sd=12,log = TRUE)))
+  
+}
+
+
+
+# Graficos
+data <- data.frame(mu,yall,y100,y300)
+fig <- plot_ly(data,x = ~mu)
+fig <- fig %>% add_trace(y = ~yall,type = 'scatter', name = 'All data',mode = 'lines') 
+fig <- fig %>% add_trace(y = ~y100,type = 'scatter', name = '100 samples',mode = 'lines') 
+fig <- fig %>% add_trace(y = ~y300,type = 'scatter', name = '300 samples',mode = 'lines') 
+fig <- fig %>% layout(title = "-log(verosimilitud)",
+         xaxis = list(title = "mu"),
+         yaxis = list (title = "Value"))
+
+fig
+```
+Se observa que en la medida de que disminuyen los datos, el valor de la función objetivo disminuye, se pierde claridad sobre que valor minimiza la función.
+
+
+```{r, eval=TRUE}
+#Parte a) iv)
+
+# Carga de dataset
+library(plotly)
+library(readr)
+datos<-read_csv("Body Measurements_original.csv")
+n<-length(datos)
+
+
+# Obtener la solución que minimiza o maximiza la likelihood
+
+# Producto de como funcionan nlminb es necesario definir un nuevo tipo de función
+# para encontrar los parametros de la likelihood, por favor revisar estructura entregada.
+likelihood <- function(param) {
+  # Definimos los parámetros de entrada de la función
+  mu = param[1]
+  sigma = param[2]
+  -sum(dnorm(datos$TotalHeight,mean=mu,sd=sigma,log = TRUE))
+}
+
+# Optimizador
+nlminb(objective=likelihood, start=list(mu=1,sigma=1),lower=list(mu=1,sigma=1), upper=list(mu=50,sigma=50)) 
+
+```
+
+
+Finalmente se estima que mu=48.11, lo cual es exactamente el promedio de los datos calculado de forma sencilla, por otro lado la desviación estandar es 12.14.
+
+```{r, eval=TRUE}
+
+# Parte b)
+# Carga de dataset
+library(plotly)
+library(readr)
+datos<-read_csv("Body Measurements_original.csv")
+n<-length(datos)
+
+# Obtener la solución que minimiza o maximiza la likelihood
+
+# Producto de como funcionan nlminb es necesario definir un nuevo tipo de función
+# para encontrar los parametros de la likelihood, por favor revisar estructura entregada.
+
+
+# Grafico de densidad
+
+# Primera Parte
+# Plot de densidades de la variables TotalHeight
+density<-density(datos$Age)
+fig <- plot_ly(x = ~density$x, y = ~density$y, type = 'scatter', mode = 'lines', fill = 'tozeroy')
+fig <- fig %>% layout(xaxis = list(title = 'Carat'),
+         yaxis = list(title = 'Density'))
+fig <- fig %>% layout(title = "Densidad de la variable Age",
+         xaxis = list(title = "Age"),
+         yaxis = list (title = "Densidad"))
+fig
+
+likelihood <- function(param) {
+  # Definimos los parámetros de entrada de la función
+  mu = param[1]
+  sigma = param[2]
+  -sum(dnorm(datos$Age,mean=mu,sd=sigma,log = TRUE))
+}
+
+# Optimizador
+nlminb(objective=likelihood, start=list(mu=1,sigma=1),lower=list(mu=1,sigma=1), upper=list(mu=50,sigma=50)) 
+
+```
+Finalmente se obtiene el promedio de Age 15.34 y la desviación standar 11.82, lo cual calza con los resultados que se obtendrian mediante mean() y sd(). Adicionalmente, a partir del grafico de densidad, se observa que la mayoria de las observaciones estan concentradas en la cola izquierda, lo cual se asocia a un skew positivo.
+
+---
+
+### Pregunta 4: Bootstrap
+
+Para esta pregunta será necesario cargar el dataset `SAT_GPA.csv`, con el que estudiaremos la correlación entre las variables SAT y GPA. Dentro de las variables: GPA representa el rendimiento académico de un estudiante en el sistema estadounidense, mientras que SAT es una prueba de admisión universitaria en estados unidos.
+Las actividades por realizar en esta pregunta son las siguientes:
+
+- [ ] Visualizar la correlación de los datos.
+- [ ] Obtener la correlación entre los datos de las variables ``Total``, quien representa el resultado de la prueba SAT en USA, y la variable ``GPA``.
+- [ ] Programar el método Bootstrap para calcular el error estándar de la correlación. Para la simulación utilice un numero de muestras (B) igual a 5000 o algún otro numero de este orden.
+- [ ] Visualizar a través de un gráfico el histograma obtenido al realizar el muestreo con Bootstrap.
+- [ ] Obtener el 95% de intervalo de confianza de la estimación por cuantiles como se vio en clases.
+
+**Nota:** No se permite la utilización de librerías de bootstrap para esta parte.
+
+**Respuesta:**
+
+Observamos una correlación positiva entre las variables `Gpa` y `Total`
+```{r, fig.align = "center", fig.width = 9, fig.heigth = 4}
+df <- read.csv(file = "SAT_GPA.csv") # cargamos la base de datos
+ggplot(df, aes(x = Gpa, y = Total, color = Total)) + geom_point() + labs(title = "Scatter plot Gpa vs Total") + theme_light() # generamos el gráfico de dispersión entre Gpa y Total
+```
+
+Podemos calcular la *correlación puntual* a partir de los datos de la muestra.
+
+```{r}
+cor(df$Gpa, df$Total)
+```
+
+Las variables `Total` y `Gpa` tienen una correlación positiva de `r cor(df$Gpa, df$Total)`, lo que explica el comportamiento de los datos en el gráfico anterior.
+
+Visualizamos el histograma de las correlaciones de la *sampling distribution* generadas por Bootstrap:
+
+```{r, fig.align = "center", fig.width = 9, fig.heigth = 4}
+# bootstrap para correlacion
+n_muestras <- 5000 # cantidad de muestras que tomará bootstrap
+tamano_muestra <- 30 # tamaño de cada muestra
+alpha <- 0.05 # nivel de significancia
+
+values <- vector()
+for(i in 1:n_muestras){ # numero de muestras de la sampling distribution
+  sample <- df[c("Total", "Gpa")] %>% sample_n(tamano_muestra, replace = TRUE) # obtengo una muestra con repetición del par ordenado (Total, Gpa)
+  values[i] <- cor(sample$"Total", sample$"Gpa") # calculo la correlación sobre la muestra y la guardo
+}
+
+l.CI <- quantile(values, alpha/2) # obtengo el limite inferior del intervalo de confianza
+u.CI <- quantile(values, 1-alpha/2) # obtengo el intervalo superior del intervalo de confianza
+
+se <- sd(values) # el error estandar es la desviación estándar de la muestra (sampling distribution) generada por bootstrap
+
+values <- data.frame(values) # convertimos a dataframe para usar ggplot
+
+ggplot(values, aes(values)) + geom_histogram(color = "tan", fill = "tan", bins = 30, alpha = 0.6) + labs(x = "Correlación", y = "Frecuencia", title = "Distribución muestral de correlación") + theme_light() + geom_vline(xintercept = l.CI, linetype = "dashed", alpha = 0.6) + geom_vline(xintercept = u.CI, linetype = "dashed", alpha = 0.6)
+```
+
+Es interesante notar que el histograma observado se aproxima **visualmente** a una distribución Normal. Por último, el intervalo de confianza viene dado por (`r l.CI`, `r u.CI`)
+
+---
+
+&nbsp;
+<hr />
+<p style="text-align: center;">A work by <a href="https://github.com/dccuchile/CC6104">CC6104</a></p>
+
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+
+<!-- Add font awesome icons -->
+<p style="text-align: center;">
+    <a href="https://github.com/dccuchile/CC6104"><i class="fab fa-github" style='font-size:30px'></i></a>
+    <a href="https://discord.gg/XCbQvGs3Uf"><i class="fab fa-discord" style='font-size:30px'></i></a>
+</p>
+
+
+
+&nbsp;
